@@ -1,0 +1,22 @@
+{
+  "compilerOptions": {
+    "outFile": "./index.js",
+    "target": "es3",
+    "moduleResolution": "Node",
+    "noImplicitReturns": true,
+    "noFallthroughCasesInSwitch": true,
+    "noImplicitAny": true,
+    "allowUnreachableCode": false,
+    "allowUnusedLabels": false,
+    "declaration": true
+  },
+  "include": [
+    "./utils/**/*.*",
+    "./src/**/*.ts",
+    "./utils/gastap.d.ts"
+  ],
+  "exclude": [
+    "plop-templates",
+    "**/plop-templates/*",
+  ]
+}

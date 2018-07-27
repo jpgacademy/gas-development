@@ -1,0 +1,22 @@
+# TESTING SETUP
+The document/script must NOT be in a team folder for the following to work.  
+If it is in a team folder you will need to create a NEW Google Cloud Project and associate it with the script.
+
+Copy the script id into the settings.json file.
+https://script.google.com/macros/d/<ScriptId>/edit
+
+Then click on "Resources -> Cloud Platform project..." in the script
+Enable the Apps Script API
+Create and Download the OAuth Client credentials to credentials.json
+
+Run the test file and allow the settings.
+IF YOU ran the test file first and there is a token.json file, you need to delete it and rerun the test file.
+
+
+
+
+Clasp Error with subdirectories:
+// line 146 in files.js of @google/clasp
+
+
+ORDER OF OPERATION

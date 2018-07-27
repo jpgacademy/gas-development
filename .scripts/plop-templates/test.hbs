@@ -1,0 +1,25 @@
+  const Test_{{namespace}}_{{testName}} = (family: TestCollection, test: Test) => {
+    return (t: test) => {
+      try {
+        // The test data that's important for the test
+        
+        
+        // Less important test data
+        
+        
+        // Expectation/Stub setup
+       
+       
+        // Call to object under test
+        
+        
+        // Assertions
+        
+        
+      } catch (err) {
+        t.fail(testMsg(family.name, family.description, `${test.description}:  ($err)`));
+        return;
+      }
+      t.pass(testMsg(family.name, family.description, test.description));
+    }
+  };

@@ -1,0 +1,41 @@
+{
+  "name": "testGAS",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "node ./utils/test.js | node ./node_modules/tap-mocha-reporter/index.js spec; exit 0",
+    "test:all": "node ./utils/test.js all | node ./node_modules/tap-mocha-reporter/index.js spec; exit 0",
+    "test:family": "node ./utils/test.js family <name> | node ./node_modules/tap-mocha-reporter/index.js spec; exit 0",
+    "generate": "plop --plopfile ./.scripts/plopfile.js",
+    "push": "clasp push",
+    "push:watch": "clasp push --watch"
+  },
+  "keywords": [],
+  "author": "malacon <cbaker@jpgacademy.org>",
+  "license": "ISC",
+  "dependencies": {
+    "cli-spinner": "^0.2.8",
+    "d": "^1.0.0",
+    "fuzzy": "^0.1.3",
+    "googleapis": "^27.0.0",
+    "inquirer-checkbox-plus-prompt": "^1.0.1",
+    "inquirer-directory": "^2.1.0",
+    "inquirer-file": "^1.0.1",
+    "node-fetch": "^2.2.0",
+    "npm-run": "^5.0.1",
+    "opn": "^5.3.0",
+    "project-name": "^0.2.6",
+    "ramda": "^0.25.0",
+    "request": "^2.87.0",
+    "request-promise": "^4.2.2",
+    "request-promise-cache": "^2.0.0",
+    "s": "^0.1.1",
+    "server-destroy": "^1.0.1",
+    "tap-mocha-reporter": "^3.0.7",
+    "tsgast": "git+https://github.com/kevincar/gast.git"
+  },
+  "devDependencies": {
+    "plop": "^2.0.0"
+  }
+}
