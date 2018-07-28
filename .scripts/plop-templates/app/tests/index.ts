@@ -15,6 +15,7 @@ interface Test {
   description: string
 }
 
+type testFn = (family: TestCollection, test: Test) => runFuncType;
 namespace Test {
 
   let currentTest: string[] = [];
