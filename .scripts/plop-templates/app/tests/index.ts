@@ -4,6 +4,7 @@
 // Tests for the Worksheet namespace
 /// <reference path="../../utils/gastap.d.ts" />
 
+type testFn = (family: TestCollection, test: Test) => runFuncType;
 interface TestCollection {
   name: string,
   description: string,
@@ -15,7 +16,7 @@ interface Test {
   description: string
 }
 
-type testFn = (family: TestCollection, test: Test) => runFuncType;
+
 namespace Test {
 
   let currentTest: string[] = [];
