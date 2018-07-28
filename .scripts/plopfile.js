@@ -21,7 +21,7 @@ module.exports = function (plop) {
       name: 'projectName',
       message: 'What is the name of your project?',
       filter: pascalCase
-    },{
+    }, {
       type: 'checkboxPlus',
       pageSize: 10,
       highlight: true,
@@ -33,10 +33,11 @@ module.exports = function (plop) {
         return new Promise(function (resolve) {
           getScopes().then(d => {
             const scopeList = R.uniq(d.reduce((list, parent) => {
-              return [...list, ...parent.scopes.map(s => 
+              return [...list, ...parent.scopes.map(s =>
                 //`${parent.scopeParent}: ${s.description}`
                 ({ name: s.url, value: s.url, short: s.description, disabled: false }))
-              ]}, [])).sort();
+              ]
+            }, [])).sort();
             var fuzzyResult = fuzzy.filter(scope, scopeList, {
               extract: function (item) {
                 return item['name'];
@@ -50,7 +51,7 @@ module.exports = function (plop) {
         })
       },
       validate: (scopes) => scopes.length > 0 ? true : 'You must select a scope.'
-    },{
+    }, {
       type: 'input',
       name: 'documentId',
       message: 'What is the ID of your document?'
@@ -60,18 +61,18 @@ module.exports = function (plop) {
       destination: '../',
       templateFiles: 'plop-templates/app/**/*',
       skipIfExists: true
-    },{
+    }, {
       type: 'add',
       path: '../app/lib/gastest.js',
       skipIfExists: true,
       templateFile: '../node_modules/tsgast/index.js',
-    },{
+    }, {
       type: 'addMany',
       destination: '../',
       templateFiles: 'plop-templates/utils/**/*',
       // skipIfExists: true,
       force: true
-    },(answers) => {
+    }, (answers) => {
       const name = answers.projectName;
       const docId = answers.documentId.toString();
       let spinner = new Spinner('%s...Creating Clasp Project');
@@ -109,23 +110,23 @@ module.exports = function (plop) {
             });
           });
         });
-    });
-    },{
+      });
+    }, {
       type: 'add',
       path: '../appsscript.json',
       force: true,
       templateFile: 'plop-templates/app/appsscript.json'
-    },{
+    }, {
       type: 'add',
       path: '../utils/gastap.d.ts',
       skipIfExists: true,
       templateFile: '../node_modules/tsgast/index.d.ts'
-    },{
+    }, {
       type: 'add',
       path: '../tsconfig.json',
       force: true,
       templateFile: 'plop-templates/tsconfig.json'
-    },{
+    }, {
       type: 'add',
       path: '../app/lib/ramda.js',
       skipIfExists: true,
@@ -154,21 +155,26 @@ module.exports = function (plop) {
     }], // array of inquirer prompts
     actions: [{
       type: 'add',
-      path: 'app/src/{{namespace}}.ts',
+      path: '../app/src/{{namespace}}.ts',
       templateFile: 'plop-templates/namespace.hbs'
     }, {
       type: 'add',
-      path: 'app/tests/{{namespace}}.test.ts',
+      path: '../app/tests/{{namespace}}.test.ts',
       templateFile: 'plop-templates/namespace-test.hbs'
     }, {
       type: 'append',
       path: '../app/tests/index.ts',
       pattern: /export const tests: TestCollection\[\] = \[/gi,
       template: 'Test.{{namespace}}Tests',
+    }, {
+      type: 'append',
+      path: '../app/tests/index.ts',
+      pattern: '\/\/ Tests for the Worksheet namespace',
+      template: '\/\/\/ <reference path="{{namespace}}.test.ts" />'
     }]  // array of actions
   });
 
-  
+
 
   plop.addPrompt('file', require('inquirer-file'));
   // plop.registerPrompt('file', require('inquirer-file'));
@@ -196,7 +202,7 @@ module.exports = function (plop) {
       path: '../app/tests/{{namespace}}.test.ts',
       pattern: /(\/\/ Test Collection)/gi,
       templateFile: 'plop-templates/test.hbs'
-    },{
+    }, {
       type: 'append',
       path: '../app/tests/{{namespace}}.test.ts',
       pattern: /(tests: \[)/gi,
@@ -207,7 +213,7 @@ module.exports = function (plop) {
 
 function getFiles() {
   const dir = './app/src/'
-  return glob.sync('./app/src/**/*.ts', {nodir: true}).map(f => {
+  return glob.sync('./app/src/**/*.ts', { nodir: true }).map(f => {
     return f.split(dir)[1].split('.')[0];
   });
 }
@@ -215,11 +221,12 @@ function getFiles() {
 const getScopes = async () => {
   const scopesURI = 'https://developers.google.com/oauthplayground/getScopes';
   const response = await rp({
-    uri: scopesURI, 
-    json: true, 
+    uri: scopesURI,
+    json: true,
     cacheKey: scopesURI,
     cacheTTL: 36000,
-    cacheLimit: 12 });
+    cacheLimit: 12
+  });
   // const json = await response.json();
   // return R.compose(R.map(R.prop('scopes')), R.prop('apis'))(response);
   return Object.entries(response.apis).map(apiClass => {
@@ -232,10 +239,10 @@ const getScopes = async () => {
     // const description = scope[1].description;
     const scopes = apiClass[1].scopes.map(s => {
       return Object.keys(s).map(k => {
-        return {url: k, description: s[k].description}
+        return { url: k, description: s[k].description }
       })[0]
     });
-    return {scopeParent, scopes}
+    return { scopeParent, scopes }
   })
 }
 
