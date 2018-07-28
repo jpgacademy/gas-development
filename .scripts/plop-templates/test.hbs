@@ -17,9 +17,9 @@
         
         
       } catch (err) {
-        t.fail(testMsg(family.name, family.description, `${test.description}:  ($err)`));
+        t.fail(Test.testMsg(family.name, family.description, `${test.description}:  ($err)`));
         return;
       }
-      t.pass(testMsg(family.name, family.description, test.description));
+      t.pass(Test.testMsg(family.name, family.description, test.description));
     }
   };
