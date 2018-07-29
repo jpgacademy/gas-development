@@ -13,7 +13,8 @@
   "include": [
     "./utils/**/*.*",
     "./src/**/*.ts",
-    "./utils/gastap.d.ts"
+    "./utils/gastap.d.ts",
+    "./utils/extra.d.ts"
   ],
   "exclude": [
     "plop-templates",
