@@ -1,6 +1,14 @@
 {
   "timeZone": "America/New_York",
-  "dependencies": {},
+  "dependencies": {
+    "enabledAdvancedServices": [
+      {
+        "userSymbol": "DriveAPI",
+        "serviceId": "drive",
+        "version": "v2"
+      }
+    ]
+  },
   "webapp": {
     "access": "ANYONE_ANONYMOUS",
     "executeAs": "USER_DEPLOYING"

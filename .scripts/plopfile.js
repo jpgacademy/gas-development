@@ -88,9 +88,7 @@ module.exports = function (plop) {
 
         // TODO: Look into using a syncronous function??
         console.log("Go to: Resources -> Cloud Platform project.. and click on the project link.\nOnce you are in the developer console, Enable the Apps Script API and create and download the OAuth Client credentials to credentials.json.  Select web app and have http://localhost:3000/oauth2callback be the callback link.  Then run the test function and accept the permissions.");
-        return npmRun.exec("cp app/appsscript.json ./", (err, stdout, stderr) => {
-          console.log("appsscript.json file copied");
-          spinner.setSpinnerTitle('%s...Pushing files to server.');
+        
           return npmRun.exec("clasp push", (err, stdout, stderr) => {
             console.log(stdout);
             console.log("Files pushed to the server.")
@@ -110,7 +108,6 @@ module.exports = function (plop) {
             });
           });
         });
-      });
     }, {
       type: 'add',
       path: '../appsscript.json',

@@ -8,8 +8,8 @@
     "test:all": "node ./utils/test.js all | node ./node_modules/tap-mocha-reporter/index.js spec; exit 0",
     "test:family": "node ./utils/test.js family <name> | node ./node_modules/tap-mocha-reporter/index.js spec; exit 0",
     "generate": "plop --plopfile ./.scripts/plopfile.js",
-    "push": "clasp push",
-    "push:watch": "clasp push --watch"
+    "push": "(cd app && clasp push)",
+    "push:watch": "(cd app && clasp push --watch)"
   },
   "keywords": [],
   "author": "malacon <cbaker@jpgacademy.org>",

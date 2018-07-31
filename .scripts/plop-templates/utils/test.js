@@ -10,11 +10,10 @@ const SCOPES = [
   'https://www.googleapis.com/auth/script.projects',
   'https://www.googleapis.com/auth/drive',
   'https://www.googleapis.com/auth/spreadsheets',
+  'https://www.googleapis.com/auth/documents',
   'https://www.googleapis.com/auth/script.external_request',
-  'https://www.googleapis.com/auth/drive',
 ];
 const TOKEN_PATH = 'token.json';
-let func = 'myFunction';
 let scriptId = '';
 
 const script = google.script({
